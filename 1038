@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i,j,a[10000]={0},b[10000]={0},n,m;
+    int c[105]={0};
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        scanf("%d",&a[i]);
+        c[a[i]]++;//直接在这里进行累计可以省去时间
+    }
+    scanf("%d",&m);
+    for(i=0;i<m;i++){
+        scanf("%d",&b[i]);
+    }
+
+    for(i=0;i<m-1;i++){
+        printf("%d ",c[b[i]]);
+    }
+     printf("%d",c[b[i]]);
+
+    return 0;
+}
+//o(n);
