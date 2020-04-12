@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i,j,n,m,c[200]={0};
+    char a;
+    for(i=0;;i++){
+        scanf("%c",&a);
+        if(a == '\n')break;
+        else if(a>='A'&&a<='Z'){
+            a=a+32;
+        }
+        c[a]++;
+    }
+    int max=0,k;
+    for(i='a';i<='z';i++){
+        if(c[i]>max){max=c[i];}
+    }
+    for(i='a';i<='z';i++){
+        if(c[i]==max){k=i; break;}
+    }
+
+    printf("%c %d",i,c[i]);
+    return 0;
+}
