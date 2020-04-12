@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char s[100000];
+    int n=0,i,j,f=1,aposition;
+   long long k=0,p=0,t=0,a=0;
+    scanf("%s",s);
+    n=strlen(s);
+    for(i=0;i<n;i++){
+
+    if( f==1 && s[i]=='A'){
+    for(j=0;j<i;j++){
+        if(s[j]=='P')p++;
+    }
+    for(j=i;j<n;j++){
+        if(s[j]=='T')t++;
+    }
+    aposition=i;
+    f=0;
+    k+=p*t;
+    }
+
+    else if(s[i]=='A'){
+    for(j=aposition;j<=i;j++){
+        if(s[j]=='P')p++;
+        if(s[j]=='T')t--;
+    }
+    aposition=i;
+    k+=p*t;
+    }
+
+
+
+    }
+    k=k%1000000007;
+
+   printf("%d",k);
+
+
+    return 0;
+}
