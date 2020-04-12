@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct kk{
+char a[20];
+int b;
+int c;
+
+};
+
+int main()
+{
+    struct kk p[10000];
+    int i,j,n,m;
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+        scanf("%s %d %d",p[i].a,&p[i].b,&p[i].c);
+    }
+    scanf("%d",&m);
+    int b[10000];
+    for(i=0;i<m;i++){
+        scanf("%d",&b[i]);
+
+        for(j=0;j<n;j++){
+            if(p[j].b == b[i]){
+                printf("%s %d\n",p[j].a,p[j].c);
+            }
+
+        }
+
+    }
+
+
+
+    return 0;
+}
