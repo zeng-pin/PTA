@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int i,j,n,m,c[200]={0};
+    char a;
+    for(i=0;;i++){
+        scanf("%c",&a);
+        if(a == '\n')break;
+        c[a]++;
+    }
+    for(i=0;;i++){
+        if(c['P']!=0){printf("P");c['P']--;}
+        if(c['A']!=0){printf("A");c['A']--;}
+        if(c['T']!=0){printf("T");c['T']--;}
+        if(c['e']!=0){printf("e");c['e']--;}
+        if(c['s']!=0){printf("s");c['s']--;}
+        if(c['t']!=0){printf("t");c['t']--;}
+        if(c['P']==0&&c['A']==0&&c['T']==0&&c['e']==0&&c['s']==0&&c['t']==0)break;
+    }
+    return 0;
+}
