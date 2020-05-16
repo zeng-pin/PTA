@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+
+    int i,j,s,a[1005]={0},b[100][100]={0};
+    int cmp(const void*a ,const void*b);
+    //find n&m
+    scanf("%d",&s);
+    int m,n=0;
+    int u=sqrt(s);
+    for(i=u;i>=1;i--){
+        if(s%i == 0){
+            n=i;
+            break;
+        }
+    }
+
+    m=s/n;
+printf("%d %d\n",m,n);
+//sort a
+    for(i=0;i<s;i++){
+        scanf("%d",&a[i]);
+    }
+    qsort(a,s,sizeof(int),cmp);
+ for(i=0;i<s;i++){
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+
+//circle
+    int R=n-1, L=0, T=1, B=m-1 ,derection=1;
+    int tr=1,tb=0,k=0;
+     j=0;
+     i=0;
+     if(n==1){
+        for(j=0;j<m;j++)
+        b[j][0]=a[k++];
+     }
+
+     else{
+    for(int p=0;p<s;p++){
+         printf("(%d,%d) ",i,j);
+        b[i][j]=a[k++];
+        i=i+tb;
+        j=j+tr;
+
+        if(j>=R && derection==1){
+            derection=2;
+            R=R-1;
+            tr=0;
+            tb=1;
+        }
+        else if(j<=L &&  derection==3){
+            derection=4;
+            L=L+1;
+            tr=0;
+            tb=-1;
+        }
+        else if(i>=B && derection==2){
+            derection=3;
+            B=B-1;
+            tr=-1;
+            tb=0;
+        }
+        else if(i<=T && derection==4){
+            derection=1;
+            T=T+1;
+            tr=1;
+            tb=0;
+        }
+
+    }
+    }
+    printf("\n");
+    for(i=0;i<m;i++){
+        for(j=0;j<n;j++){
+            printf("%d ",b[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+int cmp(const void*a ,const void*b){
+    return *(int*)a <*(int*)b? 1:-1;
+}
+
+
