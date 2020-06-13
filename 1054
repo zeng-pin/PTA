@@ -1,0 +1,81 @@
+#include <iostream>
+#include <cstring>
+#include<cmath>
+using namespace std;
+
+int canChange(const string&  temp){
+string ss=(temp[0]=='-')?string(temp.begin()+1,temp.end()):temp;
+int k1=0;
+int m=ss.length();
+for(int i=0;i<m;i++){
+    if(ss[0]=='.'){
+        return 0;
+    }
+
+    if(ss[i]=='.'){
+        if(m-i-1==0){
+            return 0;
+        }
+
+        k1++;
+        if(k1>1){
+            return 0;
+        }
+    }
+    else if(ss[i]<'0'||ss[i]>'9'){
+        return 0;
+    }
+}
+float f=stof(ss);
+int i = 0;
+while (i++, f != (int)f) f *= 10;
+if(i-1>2){
+    return 0;
+}
+
+
+
+return 1;
+}
+
+int main()
+{
+    int N,count=0;
+    double sum=0.0;
+    cin>>N;
+    int i,j;
+    string p;
+    for(i=0;i<N;i++){
+        cin>>p;
+        if(canChange(p)){
+            float num=stof(p);
+//printf("1      ");
+            if(num>=-1000 && num<=1000){
+                sum=sum+num;
+                count++;
+            }
+            else {
+                cout<<"ERROR: "<< p <<" is not a legal number"<<endl;
+            }
+
+
+
+        }
+        else{
+            cout<<"ERROR: "<< p <<" is not a legal number"<<endl;
+
+        }
+    }
+    if(count==0){
+        cout<<"The average of 0 numbers is Undefined"<<endl;
+    }
+    else if(count==1){
+        printf("The average of 1 number is %.2f",sum);
+    }
+    else{
+        printf("The average of %d numbers is %.2f",count,sum/count);
+    }
+
+
+    return 0;
+}
