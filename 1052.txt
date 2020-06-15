@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void back(char a[],int n){
+
+int k=0,i=0;
+char c[10];
+while(a[i]!='\n'){
+     if(a[i]=='['){
+        k++;
+            if(k==n){
+                    int p=0;
+                  while(a[i]!=']'){
+                      i++;
+                    c[p++]=a[i];
+                  }
+            }
+     }
+ i++;
+}
+return c;
+}
+
+
+int getline(char s[],int lim)//lim为限制的字符串长度
+
+{
+
+	int c,i;//c定义为int类型的原因：足够大可以存放EOF
+
+	for(i=0;i<lim-1&&(c=getchar())!='\n'&&c!=EOF;++i)
+
+	   s[i]=c;
+
+	if('\n'==c)
+
+	{
+
+	   s[i++]='\n';//c++中的getline函数实现不包含'\n'
+
+	}
+
+	s[i]='\0';
+
+	return i;
+
+}
+
+
+int main()
+{
+    char a[50],b[50],c[50];
+    int a1[50],b1[50],c1[50];
+    int na,nb,nc,i,j;
+    na=getline(a,100);
+    nb=getline(b,100);
+    nc=getline(c,100);
+    /*for(i=0;i<n;i++){
+        printf("%c",a[i]);
+    }*/
+    int n;
+    scanf("%d",&n);
+    for(i=0;i<n;i++){
+            for(j=0;j<5;j++){
+             scanf("%d",&a[j]);
+            }
+    }
+
+
+
+    return 0;
+}
