@@ -1,0 +1,74 @@
+#include <iostream>
+#include<algorithm>
+using namespace std;
+struct STU{
+    string name;
+    int height;
+
+};
+
+int d_comp(const STU &a,const STU &b){
+if(a.height!=b.height) return a.height>b.height;
+else return a.name<b.name;
+}
+int main()
+{
+    struct STU stu[10000];
+    int N,K;
+    cin>>N>>K;
+    int eachLine=N/K;
+    int lastLine=N%K+eachLine;
+
+    for(int i=0;i<N;i++){
+        cin>>stu[i].name>>stu[i].height;
+    }
+    sort(stu,stu+N,d_comp);
+
+    string finName[K][N/K*2];
+
+    int k=0;
+    for(int i=0;i<K;i++){
+        if(i==0){
+        int mid=lastLine/2;
+            int f=1;
+            for(int j=0;j<lastLine;j++){
+                finName[i][mid+j*f]=stu[k].name;
+                mid=mid+j*f;
+                f=f*-1;
+                k++;
+
+            }
+        }
+        else{
+            int mid=eachLine/2;
+            int f=1;
+            for(int j=0;j<eachLine;j++){
+                finName[i][mid+j*f]=stu[k].name;
+                mid=mid+j*f;
+                f=f*-1;
+                k++;
+
+            }
+        }
+
+    }
+
+
+   int i=0,j=0;
+   for( j=0;j<lastLine-1;j++){
+            cout<<finName[i][j]<<" ";
+        }
+        cout<<finName[i][j]<<endl;
+
+    for( i=1;i<K;i++){
+        for( j=0;j<eachLine-1;j++){
+            cout<<finName[i][j]<<" ";
+        }
+        cout<<finName[i][j]<<endl;
+
+    }
+
+
+
+    return 0;
+}
